@@ -29,7 +29,8 @@
         </div>
         <div style="display: flex; gap: 10px; align-items: center;">
             <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
-            <a href="../index.html" style="text-decoration: none; font-size: 20px;" title="Logout" onclick="localStorage.removeItem('selected_section')">🚪</a>
+            <!-- Logout కి logoutUser() ఫంక్షన్ -->
+            <a href="javascript:void(0)" onclick="logoutUser()" style="text-decoration: none; font-size: 20px;" title="Logout">🚪</a>
         </div>
     </header>
 
@@ -55,9 +56,10 @@
     </div>
 
     <footer class="global-footer">
-        <p>An initiative of <span id="valiassTrigger" class="valiass-link">@Valiass</span> team.</p>
+        <p>An initiative of <span class="valiass-link">@Valiass</span> team.</p>
     </footer>
 
+    <script src="../js/auth.js"></script>
     <script>
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
