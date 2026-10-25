@@ -3,18 +3,18 @@
    ========================================= */
 
 /* --- Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap');
 
 /* --- Light Theme (Default) --- */
 :root {
-  --primary-blue: #0a4a8a;     /* Logo Navy Blue */
-  --secondary-blue: #1976d2;   /* Logo Light Blue */
-  --accent-green: #2e7d32;     /* Logo Green */
-  --accent-gold: #fbc02d;      /* Logo Gold */
+  --primary-blue: #0a4a8a;
+  --secondary-blue: #1976d2;
+  --accent-green: #2e7d32;
+  --accent-gold: #fbc02d;
   --bg-light: #f5f7fa;
   --bg-card: #ffffff;
-  --text-dark: #1a1a1a;
-  --text-muted: #555555;
+  --text-dark: #333333;
+  --text-muted: #666666;
   --border-color: #e0e0e0;
   --header-bg: rgba(255, 255, 255, 0.95);
   --footer-bg: #ffffff;
@@ -46,7 +46,7 @@
   margin: 0; 
   padding: 0; 
   box-sizing: border-box; 
-  font-family: 'Inter', sans-serif; /* Body Font */
+  font-family: 'Poppins', sans-serif;
 }
 
 body { 
@@ -61,9 +61,8 @@ body {
 }
 
 h1, h2, h3, h4 { 
-  font-family: 'Poppins', sans-serif; /* Heading Font */
   font-weight: 700; 
-  color: var(--primary-blue); /* Direct Logo Color, No Gradient */
+  color: var(--primary-blue);
 }
 
 /* --- Global Header --- */
@@ -95,6 +94,7 @@ h1, h2, h3, h4 {
 }
 
 .header-left h1 { 
+  font-family: 'Playfair Display', serif;
   font-size: 20px; 
   margin: 0; 
 }
@@ -211,7 +211,7 @@ h1, h2, h3, h4 {
 .welcome-text { 
   font-size: 28px; 
   font-weight: 800; 
-  color: #ffffff; /* Solid White */
+  color: #ffffff;
   z-index: 2; 
 }
 
@@ -223,7 +223,7 @@ h1, h2, h3, h4 {
   z-index: 2; 
 }
 
-/* --- Section Selection (Tiles) --- */
+/* --- Section Selection (One View Layout) --- */
 .selection-screen { 
   display: flex; 
   flex-direction: column; 
@@ -243,19 +243,19 @@ h1, h2, h3, h4 {
   text-align: center; 
 }
 
-/* Grid System for Tiles */
-.section-tiles { 
+/* Portal Grid (Two big icons side by side) */
+.portal-grid { 
   display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  grid-template-columns: 1fr 1fr; 
   gap: 20px; 
   width: 100%; 
-  max-width: 800px; 
+  max-width: 500px; 
 }
 
 .section-tile { 
   background: var(--bg-card); 
   border-radius: 20px; 
-  overflow: hidden; 
+  padding: 30px 15px; 
   text-align: center; 
   cursor: pointer; 
   box-shadow: var(--shadow-md); 
@@ -263,6 +263,8 @@ h1, h2, h3, h4 {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .section-tile:hover { 
@@ -271,26 +273,17 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-lg); 
 }
 
-.tile-image { 
-  width: 100%; 
-  height: 160px; 
-  object-fit: cover; 
+.tile-icon-big { 
+  font-size: 60px; 
+  margin-bottom: 15px; 
 }
 
-.tile-content { 
-  padding: 20px; 
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.tile-content h3 { 
+.section-tile h3 { 
   font-size: 20px; 
-  margin-bottom: 8px; 
+  margin-bottom: 5px; 
 }
 
-.tile-content p { 
+.section-tile p { 
   color: var(--text-muted); 
   font-size: 13px; 
 }
@@ -395,104 +388,31 @@ h1, h2, h3, h4 {
   font-weight: 700; 
 }
 
-/* --- Admin Modal --- */
-.admin-modal { 
-  background: var(--bg-card); 
-  width: 90%; 
-  max-width: 340px; 
-  border-radius: 16px; 
-  padding: 30px 20px; 
-  text-align: center; 
-  box-shadow: var(--shadow-lg); 
-  transform: translateY(20px); 
-  transition: 0.3s; 
-  position: relative; 
-  border-top: 5px solid var(--accent-gold); 
-  margin-bottom: 50px; 
-}
-
-.modal-overlay.active .admin-modal { transform: translateY(0); }
-
-.close-modal { 
-  position: absolute; 
-  top: 10px; right: 15px; 
-  font-size: 24px; 
-  cursor: pointer; 
-  color: var(--text-muted); 
-  border: none; 
-  background: none; 
-}
-
-.admin-icon { 
-  font-size: 40px; 
-  margin-bottom: 10px; 
-}
-
-/* --- Forms --- */
-.input-group { margin-bottom: 20px; }
-
-.input-group label { 
-  display: block; 
-  font-size: 13px; 
-  font-weight: 600; 
-  margin-bottom: 8px; 
-  color: var(--text-dark); 
-}
-
-.input-group input, .input-group select { 
-  width: 100%; 
-  padding: 14px; 
-  border: 1px solid var(--border-color); 
-  border-radius: 8px; 
-  font-size: 15px; 
-  outline: none; 
-  background: var(--bg-light); 
-  color: var(--text-dark); 
-  transition: 0.3s; 
-  font-family: 'Inter', sans-serif;
-}
-
-.input-group input:focus { 
-  border-color: var(--primary-blue); 
-  box-shadow: 0 0 0 3px rgba(10, 74, 138, 0.1); 
-}
-
-.btn-submit { 
-  width: 100%; 
-  padding: 15px; 
-  background: var(--primary-blue); 
-  color: white; 
-  border: none; 
-  border-radius: 8px; 
-  font-size: 16px; 
-  font-weight: 600; 
-  cursor: pointer; 
-  transition: 0.3s; 
-  font-family: 'Poppins', sans-serif;
-}
-
-.btn-submit:hover { 
-  background: var(--secondary-blue); 
-  box-shadow: 0 5px 15px rgba(10, 74, 138, 0.2);
-}
-
-/* --- Mobile Responsive (Side by Side Tiles) --- */
+/* --- Mobile Responsive --- */
 @media (max-width: 768px) {
-  .section-tiles { 
-    grid-template-columns: 1fr 1fr; /* మొబైల్ లో పక్కపక్కన */
-    gap: 12px; 
-  }
-  .tile-image { height: 100px; }
-  .tile-content { padding: 15px 10px; }
-  .tile-content h3 { font-size: 14px; }
-  .tile-content p { font-size: 11px; }
-  
   .global-header h1 { font-size: 16px; }
   .bottom-sheet { max-width: 100%; }
-}
-
-@media (max-width: 400px) {
-  .section-tiles { 
-    grid-template-columns: 1fr; /* చాలా చిన్న స్క్రీన్ లో ఒకదాని కింద ఒకటి */
+  
+  /* Force One View in Mobile */
+  .selection-screen { 
+    height: calc(100vh - 130px); /* Header + Footer Space */
+    padding: 10px;
   }
+  
+  .portal-grid { 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+  }
+  
+  .section-tile { 
+    padding: 20px 10px; 
+  }
+  
+  .tile-icon-big { 
+    font-size: 45px; 
+    margin-bottom: 10px;
+  }
+  
+  .section-tile h3 { font-size: 16px; }
+  .section-tile p { font-size: 11px; }
 }
