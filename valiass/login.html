@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valiass Admin Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Path Rule: CSS is in parent folder -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background: var(--bg-light);">
+
+    <div class="admin-modal" style="width: 100%; max-width: 400px; margin-bottom: 0; border-top: 5px solid var(--accent-gold);">
+        <div class="admin-icon">🔐</div>
+        <h3 style="color: var(--primary-blue); font-size: 22px; text-align: center; margin-bottom: 10px;">Valiass Admin</h3>
+        <p style="text-align: center; color: var(--text-muted); font-size: 13px; margin-bottom: 20px;">Secure System Access</p>
+        
+        <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+            <div class="input-group" style="text-align: left;">
+                <label>Email Address</label>
+                <input type="email" placeholder="admin@valiass.com" required>
+            </div>
+            <div class="input-group" style="text-align: left;">
+                <label>Password</label>
+                <input type="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-submit" style="background: var(--accent-gold); color: #000; font-weight: 700;">
+                Login to Dashboard
+            </button>
+        </form>
+        <!-- Back to Home -->
+        <a href="../index.html" style="display:block; text-align:center; margin-top:20px; font-size:13px; color:var(--text-muted); text-decoration: none;">← Back to Home</a>
+    </div>
+
+</body>
+</html>
