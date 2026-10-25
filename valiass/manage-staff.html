@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Staff | Valiass Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .page-container { max-width: 800px; margin: 30px auto; padding: 20px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 5px; text-decoration: none; color: var(--primary-blue); font-weight: 600; margin-bottom: 20px; font-size: 14px; }
+        .form-card { background: var(--bg-card); padding: 25px; border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 30px; }
+        .form-card h3 { color: var(--primary-blue); margin-bottom: 20px; }
+        .form-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .form-group { flex: 1; min-width: 200px; margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-light); font-size: 14px; outline: none; }
+        .form-group input:focus, .form-group select:focus { border-color: var(--primary-blue); }
+        .btn-submit { background: var(--primary-blue); color: white; padding: 12px 25px; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; }
+        .staff-list { background: var(--bg-card); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+        .staff-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid var(--border-color); }
+        .staff-item:last-child { border-bottom: none; }
+        .staff-info h4 { font-size: 16px; margin-bottom: 3px; }
+        .staff-info p { font-size: 12px; color: var(--text-muted); }
+        .staff-actions button { background: none; border: none; cursor: pointer; font-size: 18px; margin-left: 10px; }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+    <header class="global-header">
+        <div class="header-left">
+            <img src="../assets/logo.png" alt="Logo" onerror="this.style.display='none'">
+            <h1>Manage Staff</h1>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+            <a href="../index.html" style="text-decoration: none; font-size: 20px;">🚪</a>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <a href="dashboard.html" class="back-btn">← Back to Dashboard</a>
+
+        <div class="form-card">
+            <h3>+ Add Principal / Vice Principal</h3>
+            <form onsubmit="event.preventDefault(); alert('Staff Added Successfully! Master PIN generated.');">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select required>
+                            <option value="principal">👑 Principal</option>
+                            <option value="vp">💼 Vice Principal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter Name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="10-digit Mobile" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth (DDMMYY)</label>
+                        <input type="text" placeholder="e.g. 150880" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Save & Generate PIN</button>
+            </form>
+        </div>
+
+        <h3 style="margin-bottom: 15px; color: var(--text-dark);">Current Staff</h3>
+        <div class="staff-list">
+            <div class="staff-item">
+                <div class="staff-info">
+                    <h4>👑 Srinivas (Principal)</h4>
+                    <p>9876543210 | 🟢 Active</p>
+                </div>
+                <div class="staff-actions">
+                    <button title="Edit">✏️</button>
+                    <button title="Delete">🗑️</button>
+                </div>
+            </div>
+            <div class="staff-item">
+                <div class="staff-info">
+                    <h4>💼 Ramesh (Vice Principal)</h4>
+                    <p>9876543211 | 🟢 Active</p>
+                </div>
+                <div class="staff-actions">
+                    <button title="Edit">✏️</button>
+                    <button title="Delete">🗑️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="global-footer">
+        <p>An initiative of <span class="valiass-link">@Valiass</span> team.</p>
+    </footer>
+
+    <script>
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('themeBtn').innerText = theme === 'dark' ? '☀️' : '🌙';
+        }
+    </script>
+</body>
+</html>
