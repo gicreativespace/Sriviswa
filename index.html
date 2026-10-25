@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sri Viswa E-Connect | Home</title>
+    
+    <!-- PWA Manifest for App-like Mobile View -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a4a8a">
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="top-navbar">
+        <div class="nav-brand">
+            <!-- మీ లోగో ఇక్కడ పెట్టండి (assets/logo.png) -->
+            <img src="assets/logo.png" alt="Sri Viswa Logo" onerror="this.style.display='none'">
+            <span>Sri Viswa</span>
+        </div>
+        <a href="login.html" class="btn-login-nav">Login</a>
+    </nav>
+
+    <!-- Hero Section (Main Welcome) -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Sri Viswa E-Connect</h1>
+            <p class="tagline">Your School, Connected Digitally</p>
+            <p class="desc">A secure platform for Parents, Teachers, and Staff to connect with the school seamlessly.</p>
+            
+            <a href="login.html" class="btn-primary btn-large">
+                🔐 Login to Portal
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="feature-card">
+            <div class="icon">📖</div>
+            <h3>Daily Diary</h3>
+            <p>Stay updated with homework and school announcements directly on your phone.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">📝</div>
+            <h3>Attendance</h3>
+            <p>Track your child's daily attendance and leave status easily.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">📅</div>
+            <h3>Leave Approvals</h3>
+            <p>Apply for leave and get instant updates from the school.</p>
+        </div>
+    </section>
+
+    <!-- Global Footer (Valiass) -->
+    <footer class="global-footer">
+        <p>An initiative of <span class="valiass-link" onclick="openValiassModal()">@Valiass</span> team.</p>
+    </footer>
+
+    <!-- Valiass Popup Modal -->
+    <div class="modal-overlay" id="valiassModal">
+        <div class="valiass-modal">
+            <button class="close-modal" onclick="closeValiassModal()">&times;</button>
+            <h3>✨ Valiass Digital Solutions</h3>
+            <p>For your custom Website, Mobile App, and Digital Function needs.</p>
+            <div class="modal-action-btns">
+                <a href="tel:+918985361991" class="action-btn btn-call">📞 Call: 89853 61991</a>
+                <a href="https://wa.me/918985361991?text=Hi%20Valiass%20Team,%20I%20am%20interested%20in%20your%20digital%20services." target="_blank" class="action-btn btn-whatsapp">💬 WhatsApp Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Logic -->
+    <script>
+        function openValiassModal() { document.getElementById('valiassModal').classList.add('active'); }
+        function closeValiassModal() { document.getElementById('valiassModal').classList.remove('active'); }
+        document.getElementById('valiassModal').addEventListener('click', function(e) {
+            if (e.target === this) closeValiassModal();
+        });
+    </script>
+</body>
+</html>
