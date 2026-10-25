@@ -33,7 +33,7 @@
         <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
     </header>
 
-    <!-- MAIN SCROLL AREA -->
+    <!-- MAIN SCROLL AREA (Only this scrolls) -->
     <div class="main-scroll-area" id="mainContent" style="display: none;">
         <div id="selectionScreen" class="selection-screen">
             <h2 class="selection-title">Select Your Portal</h2>
@@ -41,6 +41,7 @@
             <div class="portal-grid">
                 <!-- School Portal -->
                 <div class="section-tile" onclick="selectSection('school')">
+                    <!-- మీరు ఇమేజ్ వాడాలనుకుంటే ఇక్కడ <img src="assets/school.jpg" class="tile-image"> పెట్టుకోవచ్చు -->
                     <div class="tile-icon-big">🏫</div>
                     <h3>School</h3>
                     <p>Staff Login</p>
@@ -99,6 +100,7 @@
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
         document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+        
         function toggleTheme() {
             const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', theme);
@@ -130,37 +132,39 @@
             else window.location.href = "parent-dashboard.html";
         }
 
-        // Long Press Logic
+        // --- FIXED LONG PRESS LOGIC (No Popup on Load) ---
         const trigger = document.getElementById('valiassTrigger');
         let pressTimer;
         let isLongPress = false;
 
-        const startPress = (e) => { 
-            e.preventDefault(); 
-            isLongPress = false; 
-            pressTimer = setTimeout(() => { 
-                isLongPress = true; 
-                window.location.href = 'valiass/login.html'; 
-            }, 3000); 
+        const startPress = (e) => {
+            // Prevent default only for mouse to avoid text selection, 
+            // but allow scroll on mobile (passive: true)
+            if(e.type === 'mousedown') e.preventDefault(); 
+            
+            isLongPress = false;
+            pressTimer = setTimeout(() => {
+                isLongPress = true;
+                window.location.href = 'valiass/login.html'; // 3 Secs -> Login Page
+            }, 3000);
         };
 
-        const endPress = () => { 
-            clearTimeout(pressTimer); 
-            if (!isLongPress) openModal('contactModal'); 
+        const endPress = () => {
+            clearTimeout(pressTimer);
+            // ఇక్కడ ఎటువంటి పాప్-అప్ ఓపెన్ చేయము. సాధారణ క్లిక్ చేస్తే ఏమీ జరగదు.
         };
 
+        // Mouse Events
         trigger.addEventListener('mousedown', startPress);
         trigger.addEventListener('mouseup', endPress);
-        trigger.addEventListener('mouseleave', () => clearTimeout(pressTimer));
-        trigger.addEventListener('touchstart', startPress, {passive: false});
+        trigger.addEventListener('mouseleave', () => clearTimeout(pressTimer)); 
+
+        // Touch Events (Mobile) - passive: true to allow scrolling
+        trigger.addEventListener('touchstart', startPress, {passive: true}); 
         trigger.addEventListener('touchend', endPress);
         trigger.addEventListener('touchcancel', () => clearTimeout(pressTimer));
 
-        function openModal(id) { 
-            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active')); 
-            document.getElementById(id).classList.add('active'); 
-        }
-        
+        // Modal Close Function (For Popup to close if opened manually)
         function closeModal(id) { 
             document.getElementById(id).classList.remove('active'); 
         }
