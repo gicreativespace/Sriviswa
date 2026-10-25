@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valiass Admin | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .dashboard-container { max-width: 800px; margin: 40px auto; padding: 20px; }
+        .welcome-text { font-size: 24px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; }
+        .welcome-sub { color: var(--text-muted); font-size: 14px; margin-bottom: 30px; }
+        .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .premium-tile { background: var(--bg-card); border-radius: 20px; padding: 30px; text-align: center; box-shadow: var(--shadow); cursor: pointer; border: 2px solid transparent; transition: all 0.3s ease; }
+        .premium-tile:hover { transform: translateY(-5px); border-color: var(--primary-blue); box-shadow: 0 15px 35px rgba(10, 74, 138, 0.15); }
+        .tile-icon { font-size: 45px; margin-bottom: 15px; }
+        .premium-tile h3 { color: var(--primary-blue); font-size: 20px; margin-bottom: 10px; }
+        .premium-tile p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
+        .tile-btn { background: var(--bg-light); color: var(--primary-blue); padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .premium-tile:hover .tile-btn { background: var(--primary-blue); color: white; }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+    <header class="global-header">
+        <div class="header-left">
+            <img src="../assets/logo.png" alt="Logo" onerror="this.style.display='none'">
+            <h1>Valiass Admin Panel</h1>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+            <a href="../index.html" style="text-decoration: none; font-size: 20px;" title="Logout" onclick="localStorage.removeItem('selected_section')">🚪</a>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="welcome-text">Welcome, Super Admin!</div>
+        <div class="welcome-sub">Manage your school setup and staff here.</div>
+
+        <div class="tile-grid">
+            <div class="premium-tile" onclick="alert('School Details page coming soon!')">
+                <div class="tile-icon">🏫</div>
+                <h3>School Details</h3>
+                <p>View or Edit School Information</p>
+                <span class="tile-btn">View Details</span>
+            </div>
+
+            <div class="premium-tile" onclick="window.location.href='manage-staff.html'">
+                <div class="tile-icon">👥</div>
+                <h3>Manage Principal & VP</h3>
+                <p>Add, Edit or Remove School Heads</p>
+                <span class="tile-btn">Manage Staff</span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="global-footer">
+        <p>An initiative of <span id="valiassTrigger" class="valiass-link">@Valiass</span> team.</p>
+    </footer>
+
+    <script>
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('themeBtn').innerText = theme === 'dark' ? '☀️' : '🌙';
+        }
+    </script>
+</body>
+</html>
