@@ -34,7 +34,7 @@
         </div>
         <div style="display: flex; gap: 10px; align-items: center;">
             <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
-            <a href="../index.html" style="text-decoration: none; font-size: 20px;">🚪</a>
+            <a href="javascript:void(0)" onclick="logoutUser()" style="text-decoration: none; font-size: 20px;" title="Logout">🚪</a>
         </div>
     </header>
 
@@ -43,28 +43,29 @@
 
         <div class="form-card">
             <h3>+ Add Principal / Vice Principal</h3>
-            <form onsubmit="event.preventDefault(); alert('Staff Added Successfully! Master PIN generated.');">
+            <!-- addStaff() ఫంక్షన్ ఇక్కడ కనెక్ట్ అవుతుంది -->
+            <form id="addStaffForm" onsubmit="addStaff(event)">
                 <div class="form-row">
                     <div class="form-group">
                         <label>Role</label>
-                        <select required>
+                        <select id="staffRole" required>
                             <option value="principal">👑 Principal</option>
                             <option value="vp">💼 Vice Principal</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Full Name</label>
-                        <input type="text" placeholder="Enter Name" required>
+                        <input type="text" id="staffName" placeholder="Enter Name" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="tel" placeholder="10-digit Mobile" required>
+                        <input type="tel" id="staffPhone" placeholder="10-digit Mobile" required>
                     </div>
                     <div class="form-group">
                         <label>Date of Birth (DDMMYY)</label>
-                        <input type="text" placeholder="e.g. 150880" required>
+                        <input type="text" id="staffDob" placeholder="e.g. 150880" required>
                     </div>
                 </div>
                 <button type="submit" class="btn-submit">Save & Generate PIN</button>
@@ -80,7 +81,8 @@
                 </div>
                 <div class="staff-actions">
                     <button title="Edit">✏️</button>
-                    <button title="Delete">🗑️</button>
+                    <!-- deleteStaff() ఫంక్షన్ ఇక్కడ కనెక్ట్ అవుతుంది -->
+                    <button title="Delete" onclick="deleteStaff('Srinivas')">🗑️</button>
                 </div>
             </div>
             <div class="staff-item">
@@ -90,7 +92,7 @@
                 </div>
                 <div class="staff-actions">
                     <button title="Edit">✏️</button>
-                    <button title="Delete">🗑️</button>
+                    <button title="Delete" onclick="deleteStaff('Ramesh')">🗑️</button>
                 </div>
             </div>
         </div>
@@ -100,7 +102,10 @@
         <p>An initiative of <span class="valiass-link">@Valiass</span> team.</p>
     </footer>
 
+    <script src="../js/auth.js"></script>
+    <script src="../js/valiass.js"></script>
     <script>
+        // థీమ్ టోగుల్ (ఇది ప్రతి పేజీలో ఉంటుంది)
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
         document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
