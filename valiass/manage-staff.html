@@ -43,7 +43,6 @@
 
         <div class="form-card">
             <h3>+ Add Principal / Vice Principal</h3>
-            <!-- addStaff() ఫంక్షన్ ఇక్కడ కనెక్ట్ అవుతుంది -->
             <form id="addStaffForm" onsubmit="addStaff(event)">
                 <div class="form-row">
                     <div class="form-group">
@@ -81,7 +80,6 @@
                 </div>
                 <div class="staff-actions">
                     <button title="Edit">✏️</button>
-                    <!-- deleteStaff() ఫంక్షన్ ఇక్కడ కనెక్ట్ అవుతుంది -->
                     <button title="Delete" onclick="deleteStaff('Srinivas')">🗑️</button>
                 </div>
             </div>
@@ -105,7 +103,6 @@
     <script src="../js/auth.js"></script>
     <script src="../js/valiass.js"></script>
     <script>
-        // థీమ్ టోగుల్ (ఇది ప్రతి పేజీలో ఉంటుంది)
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
         document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
