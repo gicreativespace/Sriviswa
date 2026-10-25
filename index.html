@@ -3,88 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sri Viswa E-Connect | Welcome</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0a4a8a">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Sri Viswa Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="overflow: hidden;">
 
-    <!-- 1. WELCOME ANIMATION -->
+    <!-- WELCOME SCREEN -->
     <div id="welcomeScreen" class="welcome-screen">
+        <!-- Particles -->
+        <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 20%;"></div>
+        <div class="particle" style="width: 15px; height: 15px; top: 70%; left: 80%; animation-delay: 1s;"></div>
+        <div class="particle" style="width: 25px; height: 25px; top: 80%; left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 10px; height: 10px; top: 30%; left: 70%; animation-delay: 3s;"></div>
+
         <div class="logo-ring-container">
             <div class="glow-ring"></div>
             <img src="assets/logo.png" alt="Logo" onerror="this.style.display='none'">
         </div>
-        <h1 class="welcome-text">Sri Viswa E-Connect</h1>
-        <p class="welcome-note">Empowering Education Digitally</p>
+        <h1 class="welcome-text">Sri Viswa Connect</h1>
+        <p class="welcome-note">Your School, Connected Digitally</p>
     </div>
 
-    <!-- 2. SECTION SELECTION -->
-    <div id="selectionScreen" class="selection-screen" style="display: none;">
-        <!-- Global Header -->
-        <header class="global-header" style="position: absolute; top: 0; left: 0; width: 100%; justify-content: center;">
+    <!-- HEADER -->
+    <header class="global-header" id="mainHeader" style="display: none;">
+        <div class="header-left">
             <img src="assets/logo.png" alt="Logo" onerror="this.style.display='none'">
-            <h1>Sri Viswa School E-Connect</h1>
-        </header>
+            <h1>Sri Viswa Connect</h1>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    </header>
 
-        <h2 class="selection-title" style="margin-top: 60px;">Select Your Portal</h2>
-        
+    <!-- SECTION SELECTION -->
+    <div id="selectionScreen" class="selection-screen" style="display: none;">
+        <h2 class="selection-title">Select Your Portal</h2>
         <div class="section-tiles">
             <div class="section-tile" onclick="selectSection('school')">
-                <div class="icon">🏫</div>
-                <h3>School Section</h3>
-                <p>For Principal, VP, Teachers & Office Staff</p>
+                <!-- మీరు స్కూల్ ఫోటో ఇక్కడ పెట్టండి -->
+                <img src="assets/school.jpg" class="tile-image" alt="School" onerror="this.style.display='none'">
+                <div class="tile-content">
+                    <h3>🏫 School Section</h3>
+                    <p>For Principal, VP, Teachers & Office Staff</p>
+                </div>
             </div>
             <div class="section-tile" onclick="selectSection('parent')">
-                <div class="icon">👨‍👩‍👦</div>
-                <h3>Parent Section</h3>
-                <p>For Parents to view child's progress</p>
+                <!-- మీరు పేరెంట్/స్టూడెంట్ ఫోటో ఇక్కడ పెట్టండి -->
+                <img src="assets/parent.jpg" class="tile-image" alt="Parent" onerror="this.style.display='none'">
+                <div class="tile-content">
+                    <h3>👨‍👩‍👦 Parent Section</h3>
+                    <p>For Parents to view child's progress</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- GLOBAL FOOTER & POPUPS (Long Press Active) -->
+    <!-- FOOTER -->
     <footer class="global-footer">
         <p>An initiative of <span id="valiassTrigger" class="valiass-link">@Valiass</span> team.</p>
     </footer>
 
-    <!-- Contact Popup -->
+    <!-- Contact Popup (Icons Only) -->
     <div class="modal-overlay" id="contactModal">
         <div class="valiass-modal">
             <button class="close-modal" onclick="closeModal('contactModal')">&times;</button>
-            <h3>✨ Valiass Digital Solutions</h3>
-            <p>For your custom Website, Mobile App, and Digital Function needs.</p>
-            <div class="modal-action-btns">
-                <a href="tel:+918985361991" class="action-btn btn-call">📞 Call Us: 89853 61991</a>
-                <a href="https://wa.me/918985361991?text=Hi%20Valiass%20Team" target="_blank" class="action-btn btn-whatsapp">💬 Chat on WhatsApp</a>
+            <h3>Valiass Digital Solutions</h3>
+            <p>Need a Website or App?</p>
+            <div class="modal-action-icons">
+                <a href="tel:+918985361991" class="action-icon-btn">
+                    <div class="icon-circle btn-call-icon">📞</div>
+                    <span>Call</span>
+                </a>
+                <a href="https://wa.me/918985361991?text=Hi%20Valiass%20Team" target="_blank" class="action-icon-btn">
+                    <div class="icon-circle btn-whatsapp-icon">💬</div>
+                    <span>WhatsApp</span>
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Admin Login Popup -->
+    <!-- Admin Popup -->
     <div class="modal-overlay" id="adminLoginModal">
         <div class="valiass-modal admin-modal">
             <button class="close-modal" onclick="closeModal('adminLoginModal')">&times;</button>
             <div class="admin-icon">🔐</div>
-            <h3>Valiass System Setup</h3>
+            <h3>System Setup</h3>
             <p>Secure Admin Access</p>
-            <form onsubmit="event.preventDefault(); alert('Dummy Login'); window.location.href='valiass-setup.html';">
-                <div class="input-group" style="text-align: left;">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="admin@valiass.com" required>
-                </div>
-                <div class="input-group" style="text-align: left;">
-                    <label>Password</label>
-                    <input type="password" placeholder="••••••••••" required>
-                </div>
-                <button type="submit" class="btn-submit" style="background: #111; margin-top: 15px;">🔓 Login to Admin Panel</button>
+            <form onsubmit="event.preventDefault(); alert('Admin Login'); window.location.href='valiass-setup.html';">
+                <div class="input-group" style="text-align: left;"><label>Email</label><input type="email" placeholder="admin@valiass.com" required></div>
+                <div class="input-group" style="text-align: left;"><label>Password</label><input type="password" placeholder="••••••••" required></div>
+                <button type="submit" class="btn-submit" style="background: var(--accent-gold); color: #000; margin-top: 10px;">Login</button>
             </form>
         </div>
     </div>
 
     <script>
+        // --- Theme Logic ---
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('themeBtn').innerText = theme === 'dark' ? '☀️' : '🌙';
+        }
+
         // --- Welcome & Selection Logic ---
         const savedSection = localStorage.getItem('selected_section');
 
@@ -92,15 +116,18 @@
             if (savedSection === 'school') window.location.href = "school-dashboard.html";
             else if (savedSection === 'parent') window.location.href = "parent-dashboard.html";
         } else {
+            // Load faster (1.5s)
             setTimeout(() => {
                 document.getElementById('welcomeScreen').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('welcomeScreen').style.display = 'none';
+                    document.getElementById('mainHeader').style.display = 'flex';
+                    document.body.style.overflow = 'auto'; // Allow scrolling
                     const selection = document.getElementById('selectionScreen');
                     selection.style.display = 'flex';
                     setTimeout(() => selection.classList.add('show'), 50);
                 }, 800);
-            }, 2500);
+            }, 1500); // 1.5 secs
         }
 
         function selectSection(section) {
@@ -114,21 +141,8 @@
         let pressTimer;
         let isLongPress = false;
 
-        const startPress = (e) => {
-            e.preventDefault(); 
-            isLongPress = false;
-            pressTimer = setTimeout(() => {
-                isLongPress = true;
-                openModal('adminLoginModal');
-            }, 3000);
-        };
-
-        const endPress = () => {
-            clearTimeout(pressTimer);
-            if (!isLongPress) {
-                openModal('contactModal'); 
-            }
-        };
+        const startPress = (e) => { e.preventDefault(); isLongPress = false; pressTimer = setTimeout(() => { isLongPress = true; openModal('adminLoginModal'); }, 3000); };
+        const endPress = () => { clearTimeout(pressTimer); if (!isLongPress) openModal('contactModal'); };
 
         trigger.addEventListener('mousedown', startPress);
         trigger.addEventListener('mouseup', endPress);
@@ -137,14 +151,9 @@
         trigger.addEventListener('touchend', endPress);
         trigger.addEventListener('touchcancel', () => clearTimeout(pressTimer));
 
-        function openModal(id) {
-            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-        }
+        function openModal(id) { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active')); document.getElementById(id).classList.add('active'); }
         function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-        document.querySelectorAll('.modal-overlay').forEach(overlay => {
-            overlay.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); });
-        });
+        document.querySelectorAll('.modal-overlay').forEach(overlay => { overlay.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); }); });
     </script>
 </body>
 </html>
