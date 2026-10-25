@@ -3,68 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Portal | Sri Viswa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>School Login | Sri Viswa Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Global Header -->
     <header class="global-header">
-        <img src="assets/logo.png" alt="Logo" onerror="this.style.display='none'">
-        <h1>Sri Viswa School E-Connect</h1>
+        <div class="header-left">
+            <img src="assets/logo.png" alt="Logo" onerror="this.style.display='none'">
+            <h1>Sri Viswa Connect</h1>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
     </header>
 
-    <div class="login-wrapper">
-        <div class="login-box">
-            <h2>🏫 School Staff Login</h2>
-            <form onsubmit="event.preventDefault(); alert('Dummy Login: Redirecting to Dashboard...');">
-                <div class="input-group">
-                    <label>Email / Phone Number</label>
-                    <input type="text" placeholder="Email (Principal) or Phone (Staff)" required>
-                </div>
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="Enter Password" required>
-                </div>
+    <div style="flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px;">
+        <div class="valiass-modal" style="max-width: 400px; text-align: left;">
+            <h2 style="color: var(--primary-blue); text-align: center; margin-bottom: 20px;">🏫 Staff Login</h2>
+            <form onsubmit="event.preventDefault(); alert('Dummy Login');">
+                <div class="input-group"><label>Email / Phone</label><input type="text" placeholder="Enter ID" required></div>
+                <div class="input-group"><label>Password</label><input type="password" placeholder="Enter Password" required></div>
                 <button type="submit" class="btn-submit">Secure Login</button>
             </form>
-            <a href="index.html" class="switch-link" style="display:block; text-align:center; margin-top:20px;" onclick="localStorage.removeItem('selected_section')">← Switch Section</a>
+            <a href="index.html" style="display:block; text-align:center; margin-top:20px; font-size:13px; color:var(--text-muted);" onclick="localStorage.removeItem('selected_section')">← Switch Section</a>
         </div>
     </div>
 
-    <!-- GLOBAL FOOTER & POPUPS (Long Press Active) -->
     <footer class="global-footer">
         <p>An initiative of <span id="valiassTrigger" class="valiass-link">@Valiass</span> team.</p>
     </footer>
 
+    <!-- Contact Popup -->
     <div class="modal-overlay" id="contactModal">
         <div class="valiass-modal">
             <button class="close-modal" onclick="closeModal('contactModal')">&times;</button>
-            <h3>✨ Valiass Digital Solutions</h3>
-            <p>For your custom Website, Mobile App, and Digital Function needs.</p>
-            <div class="modal-action-btns">
-                <a href="tel:+918985361991" class="action-btn btn-call">📞 Call Us: 89853 61991</a>
-                <a href="https://wa.me/918985361991?text=Hi%20Valiass%20Team" target="_blank" class="action-btn btn-whatsapp">💬 Chat on WhatsApp</a>
+            <h3>Valiass Digital Solutions</h3>
+            <p>Need a Website or App?</p>
+            <div class="modal-action-icons">
+                <a href="tel:+918985361991" class="action-icon-btn"><div class="icon-circle btn-call-icon">📞</div><span>Call</span></a>
+                <a href="https://wa.me/918985361991?text=Hi%20Valiass%20Team" target="_blank" class="action-icon-btn"><div class="icon-circle btn-whatsapp-icon">💬</div><span>WhatsApp</span></a>
             </div>
         </div>
     </div>
 
+    <!-- Admin Popup -->
     <div class="modal-overlay" id="adminLoginModal">
         <div class="valiass-modal admin-modal">
             <button class="close-modal" onclick="closeModal('adminLoginModal')">&times;</button>
             <div class="admin-icon">🔐</div>
-            <h3>Valiass System Setup</h3>
+            <h3>System Setup</h3>
             <p>Secure Admin Access</p>
-            <form onsubmit="event.preventDefault(); alert('Dummy Login'); window.location.href='valiass-setup.html';">
-                <div class="input-group" style="text-align: left;"><label>Email Address</label><input type="email" placeholder="admin@valiass.com" required></div>
-                <div class="input-group" style="text-align: left;"><label>Password</label><input type="password" placeholder="••••••••••" required></div>
-                <button type="submit" class="btn-submit" style="background: #111; margin-top: 15px;">🔓 Login to Admin Panel</button>
+            <form onsubmit="event.preventDefault(); alert('Admin Login'); window.location.href='valiass-setup.html';">
+                <div class="input-group" style="text-align: left;"><label>Email</label><input type="email" placeholder="admin@valiass.com" required></div>
+                <div class="input-group" style="text-align: left;"><label>Password</label><input type="password" placeholder="••••••••" required></div>
+                <button type="submit" class="btn-submit" style="background: var(--accent-gold); color: #000;">Login</button>
             </form>
         </div>
     </div>
 
     <script>
+        // Theme Logic
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
+        function toggleTheme() {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('themeBtn').innerText = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Long Press Logic
         const trigger = document.getElementById('valiassTrigger');
         let pressTimer; let isLongPress = false;
         const startPress = (e) => { e.preventDefault(); isLongPress = false; pressTimer = setTimeout(() => { isLongPress = true; openModal('adminLoginModal'); }, 3000); };
@@ -75,6 +84,7 @@
         trigger.addEventListener('touchstart', startPress, {passive: false});
         trigger.addEventListener('touchend', endPress);
         trigger.addEventListener('touchcancel', () => clearTimeout(pressTimer));
+
         function openModal(id) { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active')); document.getElementById(id).classList.add('active'); }
         function closeModal(id) { document.getElementById(id).classList.remove('active'); }
         document.querySelectorAll('.modal-overlay').forEach(overlay => { overlay.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); }); });
