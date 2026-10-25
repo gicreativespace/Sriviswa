@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sri Viswa Connect</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Premium Font: Poppins for body, Playfair for Headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="overflow: hidden;">
@@ -54,9 +55,9 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (Valiass all small) -->
     <footer class="global-footer">
-        <p>An initiative of <span id="valiassTrigger" class="valiass-link">@Valiass</span> team.</p>
+        <p>An initiative of <span id="valiassTrigger" class="valiass-link">@valiass</span> team.</p>
     </footer>
 
     <!-- Bottom Sheet Contact Modal -->
@@ -92,23 +93,22 @@
         </div>
     </div>
 
-    <!-- Admin Popup (Fixed Link to valiass/login.html) -->
+    <!-- Admin Popup (Dark Glass Premium) -->
     <div class="modal-overlay" id="adminLoginModal">
-        <div class="admin-modal">
-            <button class="close-modal" onclick="closeModal('adminLoginModal')">&times;</button>
+        <div class="admin-modal" style="background: rgba(20, 25, 35, 0.95); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); color: white; border-top: 5px solid var(--accent-gold);">
+            <button class="close-modal" onclick="closeModal('adminLoginModal')" style="color: white;">&times;</button>
             <div class="admin-icon">🔐</div>
-            <h3>System Setup</h3>
-            <p>Secure Admin Access Only</p>
+            <h3 style="color: white;">System Setup</h3>
+            <p style="color: #aaa;">Secure Admin Access Only</p>
             
-            <!-- Updated Form -->
             <form onsubmit="event.preventDefault(); window.location.href='valiass/login.html';">
                 <div class="input-group" style="text-align: left;">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="admin@valiass.com" required>
+                    <label style="color: #ccc;">Email Address</label>
+                    <input type="email" placeholder="admin@valiass.com" required style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white;">
                 </div>
                 <div class="input-group" style="text-align: left;">
-                    <label>Password</label>
-                    <input type="password" placeholder="••••••••" required>
+                    <label style="color: #ccc;">Password</label>
+                    <input type="password" placeholder="••••••••" required style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white;">
                 </div>
                 <button type="submit" class="btn-submit" style="background: var(--accent-gold); color: #000; font-weight: 700; border-radius: 8px; padding: 14px;">
                     Login to Admin Panel
