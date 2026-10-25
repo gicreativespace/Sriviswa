@@ -11,7 +11,6 @@
 
     <!-- WELCOME SCREEN -->
     <div id="welcomeScreen" class="welcome-screen">
-        <!-- Particles -->
         <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 20%;"></div>
         <div class="particle" style="width: 15px; height: 15px; top: 70%; left: 80%; animation-delay: 1s;"></div>
         <div class="particle" style="width: 25px; height: 25px; top: 80%; left: 30%; animation-delay: 2s;"></div>
@@ -39,7 +38,6 @@
         <h2 class="selection-title">Select Your Portal</h2>
         <div class="section-tiles">
             <div class="section-tile" onclick="selectSection('school')">
-                <!-- మీరు స్కూల్ ఫోటో ఇక్కడ పెట్టండి -->
                 <img src="assets/school.jpg" class="tile-image" alt="School" onerror="this.style.display='none'">
                 <div class="tile-content">
                     <h3>🏫 School Section</h3>
@@ -47,7 +45,6 @@
                 </div>
             </div>
             <div class="section-tile" onclick="selectSection('parent')">
-                <!-- మీరు పేరెంట్/స్టూడెంట్ ఫోటో ఇక్కడ పెట్టండి -->
                 <img src="assets/parent.jpg" class="tile-image" alt="Parent" onerror="this.style.display='none'">
                 <div class="tile-content">
                     <h3>👨‍👩‍👦 Parent Section</h3>
@@ -62,20 +59,31 @@
         <p>An initiative of <span id="valiassTrigger" class="valiass-link">@Valiass</span> team.</p>
     </footer>
 
-    <!-- Contact Popup (Icons Only) -->
+    <!-- Contact Popup -->
     <div class="modal-overlay" id="contactModal">
-        <div class="valiass-modal">
+        <div class="valiass-modal" style="padding: 30px 20px;">
             <button class="close-modal" onclick="closeModal('contactModal')">&times;</button>
-            <h3>Valiass Digital Solutions</h3>
-            <p>Need a Website or App?</p>
-            <div class="modal-action-icons">
+            <h3 style="color: var(--primary-blue); font-size: 22px;">Valiass Digital Solutions</h3>
+            <p style="font-size: 14px; margin-bottom: 20px; color: var(--text-muted);">
+                Tell us your requirement, and we'll build it for you!
+            </p>
+            <div class="modal-action-icons" style="gap: 40px;">
                 <a href="tel:+918985361991" class="action-icon-btn">
-                    <div class="icon-circle btn-call-icon">📞</div>
-                    <span>Call</span>
+                    <div class="icon-circle" style="background: #0a4a8a;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"/>
+                        </svg>
+                    </div>
+                    <span style="font-size: 12px; font-weight: 600; color: var(--text-dark);">Call Us</span>
                 </a>
-                <a href="https://wa.me/918985361991?text=Hi%20Valiass%20Team" target="_blank" class="action-icon-btn">
-                    <div class="icon-circle btn-whatsapp-icon">💬</div>
-                    <span>WhatsApp</span>
+                <a href="https://wa.me/918985361991?text=Hi%20Valiass%20Team,%20I%20have%20a%20requirement." target="_blank" class="action-icon-btn">
+                    <div class="icon-circle" style="background: #25D366;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382C17.117 14.205 15.367 13.343 15.042 13.223C14.716 13.103 14.478 13.043 14.239 13.393C14.001 13.742 13.314 14.545 13.106 14.784C12.897 15.023 12.688 15.053 12.332 14.876C11.976 14.699 10.829 14.321 9.469 13.107C8.409 12.161 7.693 10.99 7.484 10.634C7.275 10.278 7.459 10.084 7.636 9.907C7.795 9.748 7.989 9.489 8.168 9.28C8.347 9.071 8.407 8.921 8.526 8.682C8.646 8.443 8.586 8.234 8.497 8.057C8.407 7.88 7.693 6.138 7.395 5.427C7.104 4.733 6.808 4.826 6.587 4.816C6.378 4.807 6.139 4.805 5.9 4.805C5.661 4.805 5.273 4.895 4.945 5.255C4.617 5.615 3.7 6.476 3.7 8.212C3.7 9.948 4.974 11.626 5.154 11.864C5.333 12.103 7.471 15.355 10.728 16.753C11.502 17.083 12.104 17.279 12.574 17.427C13.35 17.672 14.056 17.637 14.613 17.546C15.233 17.444 16.71 16.669 17.018 15.816C17.326 14.962 17.326 14.245 17.237 14.096C17.148 13.947 16.943 13.867 16.647 13.717L17.472 14.382Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.75 7.84 18.99L7.54 18.81L4.42 19.63L5.25 16.59L5.05 16.28C4.21 14.96 3.77 13.45 3.77 11.91C3.77 7.35 7.48 3.64 12.04 3.64C16.6 3.64 20.31 7.35 20.31 11.91C20.31 16.47 16.6 20.15 12.04 20.15Z"/>
+                        </svg>
+                    </div>
+                    <span style="font-size: 12px; font-weight: 600; color: var(--text-dark);">WhatsApp</span>
                 </a>
             </div>
         </div>
@@ -83,25 +91,32 @@
 
     <!-- Admin Popup -->
     <div class="modal-overlay" id="adminLoginModal">
-        <div class="valiass-modal admin-modal">
+        <div class="valiass-modal" style="border-top: 5px solid var(--primary-blue);">
             <button class="close-modal" onclick="closeModal('adminLoginModal')">&times;</button>
             <div class="admin-icon">🔐</div>
-            <h3>System Setup</h3>
-            <p>Secure Admin Access</p>
+            <h3 style="color: var(--primary-blue); font-size: 22px;">System Setup</h3>
+            <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 20px;">Secure Admin Access Only</p>
             <form onsubmit="event.preventDefault(); alert('Admin Login'); window.location.href='valiass-setup.html';">
-                <div class="input-group" style="text-align: left;"><label>Email</label><input type="email" placeholder="admin@valiass.com" required></div>
-                <div class="input-group" style="text-align: left;"><label>Password</label><input type="password" placeholder="••••••••" required></div>
-                <button type="submit" class="btn-submit" style="background: var(--accent-gold); color: #000; margin-top: 10px;">Login</button>
+                <div class="input-group" style="text-align: left;">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="admin@valiass.com" required>
+                </div>
+                <div class="input-group" style="text-align: left;">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-submit" style="background: var(--accent-gold); color: #000; font-weight: 700; border-radius: 8px; padding: 14px;">
+                    Login to Admin Panel
+                </button>
             </form>
         </div>
     </div>
 
     <script>
-        // --- Theme Logic ---
+        // Theme Logic
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
         document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
-
         function toggleTheme() {
             const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', theme);
@@ -109,25 +124,23 @@
             document.getElementById('themeBtn').innerText = theme === 'dark' ? '☀️' : '🌙';
         }
 
-        // --- Welcome & Selection Logic ---
+        // Welcome & Selection Logic
         const savedSection = localStorage.getItem('selected_section');
-
         if (savedSection) {
             if (savedSection === 'school') window.location.href = "school-dashboard.html";
             else if (savedSection === 'parent') window.location.href = "parent-dashboard.html";
         } else {
-            // Load faster (1.5s)
             setTimeout(() => {
                 document.getElementById('welcomeScreen').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('welcomeScreen').style.display = 'none';
                     document.getElementById('mainHeader').style.display = 'flex';
-                    document.body.style.overflow = 'auto'; // Allow scrolling
+                    document.body.style.overflow = 'auto';
                     const selection = document.getElementById('selectionScreen');
                     selection.style.display = 'flex';
                     setTimeout(() => selection.classList.add('show'), 50);
                 }, 800);
-            }, 1500); // 1.5 secs
+            }, 1500);
         }
 
         function selectSection(section) {
@@ -136,14 +149,12 @@
             else window.location.href = "parent-dashboard.html";
         }
 
-        // --- Long Press Logic ---
+        // Long Press Logic
         const trigger = document.getElementById('valiassTrigger');
         let pressTimer;
         let isLongPress = false;
-
         const startPress = (e) => { e.preventDefault(); isLongPress = false; pressTimer = setTimeout(() => { isLongPress = true; openModal('adminLoginModal'); }, 3000); };
         const endPress = () => { clearTimeout(pressTimer); if (!isLongPress) openModal('contactModal'); };
-
         trigger.addEventListener('mousedown', startPress);
         trigger.addEventListener('mouseup', endPress);
         trigger.addEventListener('mouseleave', () => clearTimeout(pressTimer));
