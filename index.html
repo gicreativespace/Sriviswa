@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body style="overflow: hidden;">
+<body>
 
     <!-- WELCOME SCREEN -->
     <div id="welcomeScreen" class="welcome-screen">
@@ -24,7 +24,7 @@
         <p class="welcome-note">Your School, Connected Digitally</p>
     </div>
 
-    <!-- HEADER -->
+    <!-- HEADER (Fixed) -->
     <header class="global-header" id="mainHeader" style="display: none;">
         <div class="header-left">
             <img src="assets/logo.png" alt="Logo" onerror="this.style.display='none'">
@@ -33,28 +33,30 @@
         <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
     </header>
 
-    <!-- SECTION SELECTION (One View Layout) -->
-    <div id="selectionScreen" class="selection-screen" style="display: none;">
-        <h2 class="selection-title">Select Your Portal</h2>
-        
-        <div class="portal-grid">
-            <!-- School Portal -->
-            <div class="section-tile" onclick="selectSection('school')">
-                <div class="tile-icon-big">🏫</div>
-                <h3>School</h3>
-                <p>Staff Login</p>
-            </div>
+    <!-- MAIN SCROLL AREA -->
+    <div class="main-scroll-area" id="mainContent" style="display: none;">
+        <div id="selectionScreen" class="selection-screen">
+            <h2 class="selection-title">Select Your Portal</h2>
+            
+            <div class="portal-grid">
+                <!-- School Portal -->
+                <div class="section-tile" onclick="selectSection('school')">
+                    <div class="tile-icon-big">🏫</div>
+                    <h3>School</h3>
+                    <p>Staff Login</p>
+                </div>
 
-            <!-- Parent Portal -->
-            <div class="section-tile" onclick="selectSection('parent')">
-                <div class="tile-icon-big">👨‍👩‍👦</div>
-                <h3>Parent</h3>
-                <p>View Child</p>
+                <!-- Parent Portal -->
+                <div class="section-tile" onclick="selectSection('parent')">
+                    <div class="tile-icon-big">👨‍👩‍👦</div>
+                    <h3>Parent</h3>
+                    <p>View Child</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- FOOTER (@valiass all small) -->
+    <!-- FOOTER (Fixed) -->
     <footer class="global-footer">
         <p>An initiative of <span id="valiassTrigger" class="valiass-link">@valiass</span> team.</p>
     </footer>
@@ -115,9 +117,8 @@
                 setTimeout(() => {
                     document.getElementById('welcomeScreen').style.display = 'none';
                     document.getElementById('mainHeader').style.display = 'flex';
-                    document.body.style.overflow = 'auto'; // Allow scroll if needed
+                    document.getElementById('mainContent').style.display = 'flex';
                     const selection = document.getElementById('selectionScreen');
-                    selection.style.display = 'flex';
                     setTimeout(() => selection.classList.add('show'), 50);
                 }, 800);
             }, 1500);
@@ -129,7 +130,7 @@
             else window.location.href = "parent-dashboard.html";
         }
 
-        // Long Press Logic (Direct to Valiass Login Page)
+        // Long Press Logic
         const trigger = document.getElementById('valiassTrigger');
         let pressTimer;
         let isLongPress = false;
