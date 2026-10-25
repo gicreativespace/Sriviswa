@@ -3,87 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sri Viswa E-Connect | Home</title>
-    
-    <!-- PWA Manifest for App-like Mobile View -->
+    <title>Sri Viswa E-Connect | Welcome</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0a4a8a">
-    
-    <!-- Premium Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Global Styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="margin:0; overflow: hidden;">
 
-    <!-- Top Navigation Bar -->
-    <nav class="top-navbar">
-        <div class="nav-brand">
-            <!-- మీ లోగో ఇక్కడ పెట్టండి (assets/logo.png) -->
-            <img src="assets/logo.png" alt="Sri Viswa Logo" onerror="this.style.display='none'">
-            <span>Sri Viswa</span>
+    <!-- 1. WELCOME ANIMATION SCREEN -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="logo-ring-container">
+            <div class="glow-ring"></div>
+            <img src="assets/logo.png" alt="Logo" onerror="this.style.display='none'">
         </div>
-        <a href="login.html" class="btn-login-nav">Login</a>
-    </nav>
-
-    <!-- Hero Section (Main Welcome) -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1>Sri Viswa E-Connect</h1>
-            <p class="tagline">Your School, Connected Digitally</p>
-            <p class="desc">A secure platform for Parents, Teachers, and Staff to connect with the school seamlessly.</p>
-            
-            <a href="login.html" class="btn-primary btn-large">
-                🔐 Login to Portal
-            </a>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="feature-card">
-            <div class="icon">📖</div>
-            <h3>Daily Diary</h3>
-            <p>Stay updated with homework and school announcements directly on your phone.</p>
-        </div>
-        <div class="feature-card">
-            <div class="icon">📝</div>
-            <h3>Attendance</h3>
-            <p>Track your child's daily attendance and leave status easily.</p>
-        </div>
-        <div class="feature-card">
-            <div class="icon">📅</div>
-            <h3>Leave Approvals</h3>
-            <p>Apply for leave and get instant updates from the school.</p>
-        </div>
-    </section>
-
-    <!-- Global Footer (Valiass) -->
-    <footer class="global-footer">
-        <p>An initiative of <span class="valiass-link" onclick="openValiassModal()">@Valiass</span> team.</p>
-    </footer>
-
-    <!-- Valiass Popup Modal -->
-    <div class="modal-overlay" id="valiassModal">
-        <div class="valiass-modal">
-            <button class="close-modal" onclick="closeValiassModal()">&times;</button>
-            <h3>✨ Valiass Digital Solutions</h3>
-            <p>For your custom Website, Mobile App, and Digital Function needs.</p>
-            <div class="modal-action-btns">
-                <a href="tel:+918985361991" class="action-btn btn-call">📞 Call: 89853 61991</a>
-                <a href="https://wa.me/918985361991?text=Hi%20Valiass%20Team,%20I%20am%20interested%20in%20your%20digital%20services." target="_blank" class="action-btn btn-whatsapp">💬 WhatsApp Us</a>
-            </div>
-        </div>
+        <h1 class="welcome-text">Sri Viswa E-Connect</h1>
+        <!-- మీరు ఇక్కడ లైన్ మార్చుకోవచ్చు -->
+        <p class="welcome-note">Empowering Education Digitally</p>
     </div>
 
-    <!-- Modal Logic -->
+    <!-- 2. SECTION SELECTION SCREEN (Initially Hidden) -->
+    <div id="selectionScreen" class="selection-screen" style="display: none;">
+        <h2 class="selection-title">Select Your Portal</h2>
+        
+        <div class="section-tiles">
+            <!-- School Tile -->
+            <div class="section-tile" onclick="selectSection('school')">
+                <div class="icon">🏫</div>
+                <h3>School Section</h3>
+                <p>For Principal, VP, Teachers & Office Staff</p>
+            </div>
+
+            <!-- Parent Tile -->
+            <div class="section-tile" onclick="selectSection('parent')">
+                <div class="icon">👨‍👩‍👦</div>
+                <h3>Parent Section</h3>
+                <p>For Parents to view child's progress</p>
+            </div>
+        </div>
+
+        <!-- Valiass Setup Link -->
+        <a href="login.html" class="switch-link" style="margin-top: 50px;">⚙️ Valiass Setup (System Owner)</a>
+    </div>
+
     <script>
-        function openValiassModal() { document.getElementById('valiassModal').classList.add('active'); }
-        function closeValiassModal() { document.getElementById('valiassModal').classList.remove('active'); }
-        document.getElementById('valiassModal').addEventListener('click', function(e) {
-            if (e.target === this) closeValiassModal();
-        });
+        // 1. చెక్ చేయండి: యూజర్ ఇదివరకే సెక్షన్ సెలెక్ట్ చేశారా?
+        const savedSection = localStorage.getItem('selected_section');
+
+        if (savedSection) {
+            // ఒకవేళ సెలెక్ట్ చేసి ఉంటే, డైరెక్ట్ గా ఆ డాష్‌బోర్డ్ కి పంపండి
+            if (savedSection === 'school') {
+                window.location.href = "school-dashboard.html";
+            } else if (savedSection === 'parent') {
+                window.location.href = "parent-dashboard.html";
+            }
+        } else {
+            // మొదటిసారి అయితే, యానిమేషన్ చూపించి, ఆ తర్వాత సెలెక్షన్ చూపించండి
+            setTimeout(() => {
+                document.getElementById('welcomeScreen').style.opacity = '0';
+                
+                setTimeout(() => {
+                    document.getElementById('welcomeScreen').style.display = 'none';
+                    const selection = document.getElementById('selectionScreen');
+                    selection.style.display = 'flex';
+                    // ట్రాన్సిషన్ కోసం
+                    setTimeout(() => selection.classList.add('show'), 50);
+                }, 800); // 800ms తర్వాత సెలెక్షన్ స్క్రీన్
+                
+            }, 2500); // 2.5 సెకన్ల పాటు యానిమేషన్ చూపిస్తుంది
+        }
+
+        // 2. సెక్షన్ సెలెక్ట్ చేసినప్పుడు
+        function selectSection(section) {
+            localStorage.setItem('selected_section', section);
+            
+            if (section === 'school') {
+                window.location.href = "school-dashboard.html";
+            } else {
+                window.location.href = "parent-dashboard.html";
+            }
+        }
     </script>
 </body>
 </html>
