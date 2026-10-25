@@ -49,7 +49,7 @@ body { background-color: var(--bg-light); color: var(--text-dark); line-height: 
 
 /* --- Global Footer --- */
 .global-footer { text-align: center; padding: 15px; background: var(--footer-bg); color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border-color); margin-top: auto; z-index: 100; }
-.valiass-link { color: var(--primary-blue); font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s; user-select: none; }
+.valiass-link { color: var(--primary-blue); font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s; user-select: none; -webkit-user-select: none; }
 .valiass-link:hover { color: var(--secondary-blue); text-decoration: underline; }
 
 /* --- Welcome Screen --- */
@@ -79,25 +79,41 @@ body { background-color: var(--bg-light); color: var(--text-dark); line-height: 
 .tile-content h3 { color: var(--primary-blue); font-size: 20px; margin-bottom: 8px; }
 .tile-content p { color: var(--text-muted); font-size: 13px; }
 
-/* --- Modals --- */
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 10000; opacity: 0; visibility: hidden; transition: 0.3s; }
+/* --- Bottom Sheet Modal --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: flex-end; z-index: 10000; opacity: 0; visibility: hidden; transition: 0.3s; }
 .modal-overlay.active { opacity: 1; visibility: visible; }
-.valiass-modal { background: var(--bg-card); width: 90%; max-width: 340px; border-radius: 16px; padding: 30px 20px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.2); transform: translateY(20px); transition: 0.3s; position: relative; }
-.modal-overlay.active .valiass-modal { transform: translateY(0); }
+
+.bottom-sheet { background: var(--bg-card); width: 100%; max-width: 500px; border-radius: 24px 24px 0 0; padding: 20px 20px 30px; text-align: center; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 -10px 40px rgba(0,0,0,0.15); position: relative; }
+.modal-overlay.active .bottom-sheet { transform: translateY(0); }
+
+.drag-handle { width: 40px; height: 5px; background: var(--border-color); border-radius: 10px; margin: 0 auto 15px; }
+.bottom-sheet h3 { color: var(--text-dark); font-size: 20px; margin-bottom: 5px; }
+.bottom-sheet p { color: var(--text-muted); font-size: 13px; margin-bottom: 25px; line-height: 1.6; }
+
+.action-tabs { display: flex; gap: 15px; justify-content: center; }
+.action-tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 10px; border-radius: 16px; text-decoration: none; cursor: pointer; transition: 0.3s; border: 1px solid var(--border-color); background: var(--bg-light); }
+.action-tab:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+
+.tab-call { color: var(--primary-blue); }
+.tab-call .icon-box { background: var(--primary-blue); color: white; }
+.tab-call:hover { border-color: var(--primary-blue); background: #e3f2fd; }
+[data-theme="dark"] .tab-call:hover { background: rgba(25, 118, 210, 0.1); }
+
+.tab-whatsapp { color: #25D366; }
+.tab-whatsapp .icon-box { background: #25D366; color: white; }
+.tab-whatsapp:hover { border-color: #25D366; background: #e8f5e9; }
+[data-theme="dark"] .tab-whatsapp:hover { background: rgba(37, 211, 102, 0.1); }
+
+.icon-box { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 10px; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.action-tab span { font-size: 14px; font-weight: 700; }
+
+/* --- Admin Login Modal --- */
+.admin-modal { background: var(--bg-card); width: 90%; max-width: 340px; border-radius: 16px; padding: 30px 20px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.2); transform: translateY(20px); transition: 0.3s; position: relative; border-top: 5px solid var(--primary-blue); margin-bottom: 50px; }
+.modal-overlay.active .admin-modal { transform: translateY(0); }
 .close-modal { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--text-muted); border: none; background: none; }
-.valiass-modal h3 { color: var(--text-dark); margin-bottom: 10px; font-size: 20px; }
-.valiass-modal p { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; }
-
-/* --- Contact Popup Icons --- */
-.modal-action-icons { display: flex; justify-content: center; gap: 30px; margin-top: 10px; }
-.action-icon-btn { display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
-.icon-circle { width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
-.icon-circle:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-
-/* --- Admin Popup --- */
+.admin-modal h3 { color: var(--primary-blue); font-size: 22px; margin-bottom: 5px; }
+.admin-modal p { color: var(--text-muted); font-size: 13px; margin-bottom: 20px; }
 .admin-icon { font-size: 40px; margin-bottom: 10px; text-shadow: 0 0 20px rgba(10, 74, 138, 0.3); }
-.valiass-modal input { background: #f5f7fa !important; color: #333 !important; }
-.valiass-modal input:focus { border-color: var(--primary-blue) !important; box-shadow: 0 0 0 3px rgba(10, 74, 138, 0.1) !important; }
 
 /* --- Forms --- */
 .input-group { margin-bottom: 20px; }
@@ -111,4 +127,5 @@ body { background-color: var(--bg-light); color: var(--text-dark); line-height: 
 @media (max-width: 768px) {
   .section-tile { width: 100%; max-width: 350px; }
   .global-header h1 { font-size: 16px; }
+  .bottom-sheet { max-width: 100%; }
 }
