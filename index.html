@@ -92,17 +92,19 @@
         </div>
     </div>
 
-    <!-- Admin Popup -->
+    <!-- Admin Popup (Fixed Link to valiass/login.html) -->
     <div class="modal-overlay" id="adminLoginModal">
         <div class="admin-modal">
             <button class="close-modal" onclick="closeModal('adminLoginModal')">&times;</button>
             <div class="admin-icon">🔐</div>
             <h3>System Setup</h3>
             <p>Secure Admin Access Only</p>
-            <form onsubmit="event.preventDefault(); alert('Admin Login'); window.location.href='valiass-setup.html';">
+            
+            <!-- Updated Form -->
+            <form onsubmit="event.preventDefault(); window.location.href='valiass/login.html';">
                 <div class="input-group" style="text-align: left;">
                     <label>Email Address</label>
-                    <input type="email" placeholder="admin@giCreative.com" required>
+                    <input type="email" placeholder="admin@valiass.com" required>
                 </div>
                 <div class="input-group" style="text-align: left;">
                     <label>Password</label>
