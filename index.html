@@ -33,23 +33,23 @@
         <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
     </header>
 
-    <!-- SECTION SELECTION -->
+    <!-- SECTION SELECTION (One View Layout) -->
     <div id="selectionScreen" class="selection-screen" style="display: none;">
         <h2 class="selection-title">Select Your Portal</h2>
-        <div class="section-tiles">
+        
+        <div class="portal-grid">
+            <!-- School Portal -->
             <div class="section-tile" onclick="selectSection('school')">
-                <img src="assets/school.jpg" class="tile-image" alt="School" onerror="this.style.display='none'">
-                <div class="tile-content">
-                    <h3>🏫 School Section</h3>
-                    <p>For Principal, VP, Teachers & Office Staff</p>
-                </div>
+                <div class="tile-icon-big">🏫</div>
+                <h3>School</h3>
+                <p>Staff Login</p>
             </div>
+
+            <!-- Parent Portal -->
             <div class="section-tile" onclick="selectSection('parent')">
-                <img src="assets/parent.jpg" class="tile-image" alt="Parent" onerror="this.style.display='none'">
-                <div class="tile-content">
-                    <h3>👨‍👩‍👦 Parent Section</h3>
-                    <p>For Parents to view child's progress</p>
-                </div>
+                <div class="tile-icon-big">👨‍👩‍👦</div>
+                <h3>Parent</h3>
+                <p>View Child</p>
             </div>
         </div>
     </div>
@@ -115,7 +115,7 @@
                 setTimeout(() => {
                     document.getElementById('welcomeScreen').style.display = 'none';
                     document.getElementById('mainHeader').style.display = 'flex';
-                    document.body.style.overflow = 'auto';
+                    document.body.style.overflow = 'auto'; // Allow scroll if needed
                     const selection = document.getElementById('selectionScreen');
                     selection.style.display = 'flex';
                     setTimeout(() => selection.classList.add('show'), 50);
@@ -139,14 +139,12 @@
             isLongPress = false; 
             pressTimer = setTimeout(() => { 
                 isLongPress = true; 
-                // 3 సెకన్లు పూర్తయ్యాక డైరెక్ట్ గా వాలియాస్ లాగిన్ పేజీకి వెళ్ళడం
                 window.location.href = 'valiass/login.html'; 
             }, 3000); 
         };
 
         const endPress = () => { 
             clearTimeout(pressTimer); 
-            // 3 సెకన్లు పూర్తి కాకముందే వదిలేస్తే (Single Click) -> Contact Modal
             if (!isLongPress) openModal('contactModal'); 
         };
 
