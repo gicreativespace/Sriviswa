@@ -4,7 +4,7 @@
   "description": "Your School, Connected Digitally",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#f5f7fa",
+  "background_color": "#0a4a8a",
   "theme_color": "#0a4a8a",
   "orientation": "portrait",
   "icons": [
