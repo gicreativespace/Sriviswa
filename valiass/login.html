@@ -14,7 +14,6 @@
         <h3 style="color: var(--primary-blue); font-size: 22px; text-align: center; margin-bottom: 10px;">Valiass Admin</h3>
         <p style="text-align: center; color: var(--text-muted); font-size: 13px; margin-bottom: 20px;">Secure System Access</p>
         
-        <!-- Form onsubmit కి loginUser ఫంక్షన్ ఇక్కడ కనెక్ట్ అవుతుంది -->
         <form onsubmit="event.preventDefault(); loginUser(document.getElementById('vEmail').value, document.getElementById('vPass').value, 'valiass');">
             <div class="input-group" style="text-align: left;">
                 <label>Email Address</label>
@@ -31,7 +30,6 @@
         <a href="../index.html" style="display:block; text-align:center; margin-top:20px; font-size:13px; color:var(--text-muted); text-decoration: none;">← Back to Home</a>
     </div>
 
-    <!-- JS Files -->
     <script src="../js/auth.js"></script>
 </body>
 </html>
