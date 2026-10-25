@@ -1,5 +1,5 @@
 /* =========================================
-   SRI VISWA CONNECT - PREMIUM GLOBAL STYLES
+   SRI VISWA CONNECT - GLOBAL STYLES
    ========================================= */
 
 /* --- Fonts --- */
@@ -49,6 +49,8 @@ body {
   color: var(--text-dark); 
   line-height: 1.6; 
   -webkit-tap-highlight-color: transparent; 
+  
+  /* Fixed Header/Footer Layout */
   display: flex; 
   flex-direction: column; 
   height: 100vh; 
@@ -96,7 +98,7 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--primary-blue); }
 .valiass-link { color: var(--primary-blue); font-weight: 700; cursor: pointer; text-decoration: none; transition: 0.3s; user-select: none; -webkit-user-select: none; }
 .valiass-link:hover { color: var(--secondary-blue); text-decoration: underline; }
 
-/* --- Main Scroll Area --- */
+/* --- Main Scroll Area (Only this scrolls) --- */
 .main-scroll-area {
   flex: 1; 
   overflow-y: auto; 
@@ -164,24 +166,59 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--primary-blue); }
 .section-tile h3 { font-size: 22px; margin-bottom: 5px; }
 .section-tile p { color: var(--text-muted); font-size: 14px; }
 
-/* --- Mobile Responsive (Big Cards Top & Bottom) --- */
+/* --- Mobile Responsive (Big Cards) --- */
 @media (max-width: 768px) {
   .global-header h1 { font-size: 16px; }
   
   .portal-grid { 
-    grid-template-columns: 1fr; /* మొబైల్ లో ఒకదాని కింద ఒకటి (Full Width) */
+    grid-template-columns: 1fr; /* మొబైల్ లో పెద్ద కార్డ్స్ (ఒకదాని కింద ఒకటి) */
     gap: 20px; 
   }
   
-  .section-tile { 
-    padding: 40px 20px; /* పెద్ద సైజు */
-  }
-  
-  .tile-icon-big { 
-    font-size: 70px; /* పెద్ద ఐకాన్ */
-    margin-bottom: 15px;
-  }
-  
+  .section-tile { padding: 40px 20px; }
+  .tile-icon-big { font-size: 70px; margin-bottom: 15px; }
   .section-tile h3 { font-size: 24px; }
   .section-tile p { font-size: 14px; }
 }
+
+/* --- Bottom Sheet Modal (Contact) --- */
+.modal-overlay { 
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex; justify-content: center; align-items: flex-end; 
+  z-index: 10000; opacity: 0; visibility: hidden; transition: 0.3s; 
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+
+.bottom-sheet { 
+  background: var(--bg-card); width: 100%; max-width: 500px; 
+  border-radius: 24px 24px 0 0; padding: 20px 20px 30px; 
+  text-align: center; 
+  transform: translateY(100%); 
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.15); position: relative; 
+}
+.modal-overlay.active .bottom-sheet { transform: translateY(0); }
+
+.drag-handle { width: 40px; height: 5px; background: var(--border-color); border-radius: 10px; margin: 0 auto 15px; }
+.bottom-sheet h3 { font-size: 20px; margin-bottom: 5px; }
+.bottom-sheet p { color: var(--text-muted); font-size: 13px; margin-bottom: 25px; line-height: 1.6; }
+
+.action-tabs { display: flex; gap: 15px; justify-content: center; }
+.action-tab { 
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
+  padding: 20px 10px; border-radius: 16px; text-decoration: none; cursor: pointer; 
+  transition: 0.3s; border: 1px solid var(--border-color); background: var(--bg-light); 
+}
+.action-tab:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+
+.tab-call { color: var(--primary-blue); }
+.tab-call .icon-box { background: var(--primary-blue); color: white; }
+.tab-call:hover { border-color: var(--primary-blue); }
+
+.tab-whatsapp { color: #25D366; }
+.tab-whatsapp .icon-box { background: #25D366; color: white; }
+.tab-whatsapp:hover { border-color: #25D366; }
+
+.icon-box { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 10px; font-size: 24px; box-shadow: var(--shadow-sm); }
+.action-tab span { font-size: 14px; font-weight: 700; }
