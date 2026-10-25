@@ -1,0 +1,175 @@
+/* Premium Font */
+body.app-body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f0f4f8; /* Soft Premium BG */
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =========================================
+   DESKTOP SIDEBAR (Left Menu)
+   ========================================= */
+.sidebar {
+    width: 260px;
+    background: var(--primary-blue, #0a4a8a);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.05);
+    z-index: 100;
+}
+
+.sidebar-brand {
+    padding: 25px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.brand-logo { width: 35px; height: 35px; border-radius: 50%; background: white; padding: 2px;}
+.sidebar-brand h2 { font-size: 18px; font-weight: 600; margin: 0; }
+
+.sidebar-nav {
+    padding: 20px 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+/* ACTIVE STATE - Premium Green Glow */
+.nav-item.active {
+    background: linear-gradient(90deg, rgba(46, 125, 50, 0.8) 0%, rgba(46, 125, 50, 0) 100%);
+    color: white;
+    border-left: 4px solid #4caf50;
+    border-radius: 0 8px 8px 0;
+    box-shadow: inset 5px 0 10px -5px #4caf50;
+}
+
+.sidebar-footer { padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+.logout-btn {
+    display: flex; align-items: center; gap: 10px;
+    color: #ffcdd2; text-decoration: none; padding: 10px; font-weight: 600;
+}
+
+/* =========================================
+   MAIN CONTENT AREA
+   ========================================= */
+.main-content {
+    flex: 1;
+    margin-left: 260px; /* Space for sidebar */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top Header */
+.top-header {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px); /* Glass Effect */
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-left h1 { margin: 0; font-size: 22px; color: #333; font-weight: 700; }
+.header-left p { margin: 5px 0 0; font-size: 13px; color: #666; }
+
+.user-profile { display: flex; align-items: center; gap: 12px; }
+.user-name { font-weight: 600; font-size: 14px; color: #333; }
+.avatar {
+    width: 40px; height: 40px;
+    background: var(--secondary-blue, #1976d2);
+    color: white; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-weight: bold; font-size: 18px;
+}
+
+.content-wrapper { padding: 30px; }
+.premium-card {
+    background: white; padding: 30px; border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid #f0f0f0;
+}
+
+/* =========================================
+   MOBILE BOTTOM NAVIGATION (App Look)
+   ========================================= */
+.bottom-nav {
+    display: none; /* Hide on desktop */
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid #e0e0e0;
+    padding: 10px 10px 15px;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #999;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 5px 15px;
+    border-radius: 12px;
+}
+
+.bottom-nav-item .icon { font-size: 22px; margin-bottom: 4px; }
+
+/* MOBILE ACTIVE STATE */
+.bottom-nav-item.active {
+    color: var(--primary-blue, #0a4a8a);
+    background: #e3f2fd;
+}
+.bottom-nav-item.active .icon {
+    transform: translateY(-3px); /* Bounce effect */
+    transition: transform 0.3s;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Tablet & Mobile)
+   ========================================= */
+@media (max-width: 900px) {
+    .sidebar { display: none; } /* Hide Sidebar on Mobile */
+    .main-content { margin-left: 0; padding-bottom: 80px; } /* Space for bottom nav */
+    .top-header { padding: 15px 20px; }
+    .content-wrapper { padding: 20px; }
+    
+    /* Show Bottom Nav */
+    .bottom-nav { display: flex; } 
+}
