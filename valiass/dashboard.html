@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valiass Admin | Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <style>
         .dashboard-container { max-width: 800px; margin: 40px auto; padding: 20px; }
@@ -29,7 +29,14 @@
         </div>
         <div style="display: flex; gap: 10px; align-items: center;">
             <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
-            <a href="javascript:void(0)" onclick="logoutUser()" style="text-decoration: none; font-size: 20px;" title="Logout">🚪</a>
+            <!-- Premium SVG Logout Icon -->
+            <a href="../index.html" onclick="localStorage.removeItem('selected_section')" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(0,0,0,0.05); border-radius: 50%; text-decoration: none; transition: 0.3s;" title="Logout">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-dark);">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+            </a>
         </div>
     </header>
 
@@ -55,10 +62,9 @@
     </div>
 
     <footer class="global-footer">
-        <p>An initiative of <span class="valiass-link">@Valiass</span> team.</p>
+        <p>An initiative of <span class="valiass-link">@valiass</span> team.</p>
     </footer>
 
-    <script src="../js/auth.js"></script>
     <script>
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
