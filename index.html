@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sri Viswa Connect</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Premium School Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -24,13 +25,17 @@
         <p class="welcome-note">Your School, Connected Digitally</p>
     </div>
 
-    <!-- HEADER (Fixed) -->
+    <!-- HEADER (Fixed & Dynamic Title) -->
     <header class="global-header" id="mainHeader" style="display: none;">
         <div class="header-left">
             <img src="assets/logo.png" alt="Logo" onerror="this.style.display='none'">
-            <h1>Sri Viswa Connect</h1>
+            <!-- ఇక్కడ టైటిల్ డైనమిక్ గా మారుతుంది -->
+            <h1 id="pageTitle">Sri Viswa Connect</h1>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
+            <!-- SVG Moon Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
     </header>
 
     <!-- MAIN SCROLL AREA -->
@@ -41,16 +46,30 @@
             <div class="portal-grid">
                 <!-- School Portal -->
                 <div class="section-tile" onclick="selectSection('school')">
-                    <img src="assets/school.jpg" alt="School" class="tile-image" onerror="this.style.display='none'">
-                    <h3>School</h3>
-                    <p>Staff Login</p>
+                    <div class="tile-img-wrapper">
+                        <img src="assets/school.jpg" alt="School" onerror="this.style.display='none'">
+                    </div>
+                    <div class="tile-content">
+                        <div class="tile-icon-svg">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M9 8h1"></path><path d="M9 12h1"></path><path d="M9 16h1"></path><path d="M14 8h1"></path><path d="M14 12h1"></path><path d="M14 16h1"></path><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path></svg>
+                        </div>
+                        <h3>School</h3>
+                        <p>Staff Login</p>
+                    </div>
                 </div>
 
                 <!-- Parent Portal -->
                 <div class="section-tile" onclick="selectSection('parent')">
-                    <img src="assets/parent.jpg" alt="Parent" class="tile-image" onerror="this.style.display='none'">
-                    <h3>Parent</h3>
-                    <p>View Child</p>
+                    <div class="tile-img-wrapper">
+                        <img src="assets/parent.jpg" alt="Parent" onerror="this.style.display='none'">
+                    </div>
+                    <div class="tile-content">
+                        <div class="tile-icon-svg">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3>Parent</h3>
+                        <p>View Child</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,23 +88,15 @@
             <p>Tell us your requirement<br>we'll build it for you!</p>
             
             <div class="action-tabs">
-                <!-- Call Tab -->
                 <a href="tel:+918985361991" class="action-tab tab-call">
                     <div class="icon-box">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"/>
-                        </svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"/></svg>
                     </div>
                     <span>Call Us</span>
                 </a>
-
-                <!-- WhatsApp Tab -->
-                <a href="https://wa.me/918985361991?text=Hi%20GI%20Creative%20Space,%20I%20have%20a%20requirement." target="_blank" class="action-tab tab-whatsapp">
+                <a href="https://wa.me/918985361991" target="_blank" class="action-tab tab-whatsapp">
                     <div class="icon-box">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382C17.117 14.205 15.367 13.343 15.042 13.223C14.716 13.103 14.478 13.043 14.239 13.393C14.001 13.742 13.314 14.545 13.106 14.784C12.897 15.023 12.688 15.053 12.332 14.876C11.976 14.699 10.829 14.321 9.469 13.107C8.409 12.161 7.693 10.99 7.484 10.634C7.275 10.278 7.459 10.084 7.636 9.907C7.795 9.748 7.989 9.489 8.168 9.28C8.347 9.071 8.407 8.921 8.526 8.682C8.646 8.443 8.586 8.234 8.497 8.057C8.407 7.88 7.693 6.138 7.395 5.427C7.104 4.733 6.808 4.826 6.587 4.816C6.378 4.807 6.139 4.805 5.9 4.805C5.661 4.805 5.273 4.895 4.945 5.255C4.617 5.615 3.7 6.476 3.7 8.212C3.7 9.948 4.974 11.626 5.154 11.864C5.333 12.103 7.471 15.355 10.728 16.753C11.502 17.083 12.104 17.279 12.574 17.427C13.35 17.672 14.056 17.637 14.613 17.546C15.233 17.444 16.71 16.669 17.018 15.816C17.326 14.962 17.326 14.245 17.237 14.096C17.148 13.947 16.943 13.867 16.647 13.717L17.472 14.382Z"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.75 7.84 18.99L7.54 18.81L4.42 19.63L5.25 16.59L5.05 16.28C4.21 14.96 3.77 13.45 3.77 11.91C3.77 7.35 7.48 3.64 12.04 3.64C16.6 3.64 20.31 7.35 20.31 11.91C20.31 16.47 16.6 20.15 12.04 20.15Z"/>
-                        </svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.472 14.382C17.117 14.205 15.367 13.343 15.042 13.223C14.716 13.103 14.478 13.043 14.239 13.393C14.001 13.742 13.314 14.545 13.106 14.784C12.897 15.023 12.688 15.053 12.332 14.876C11.976 14.699 10.829 14.321 9.469 13.107C8.409 12.161 7.693 10.99 7.484 10.634C7.275 10.278 7.459 10.084 7.636 9.907C7.795 9.748 7.989 9.489 8.168 9.28C8.347 9.071 8.407 8.921 8.526 8.682C8.646 8.443 8.586 8.234 8.497 8.057C8.407 7.88 7.693 6.138 7.395 5.427C7.104 4.733 6.808 4.826 6.587 4.816C6.378 4.807 6.139 4.805 5.9 4.805C5.661 4.805 5.273 4.895 4.945 5.255C4.617 5.615 3.7 6.476 3.7 8.212C3.7 9.948 4.974 11.626 5.154 11.864C5.333 12.103 7.471 15.355 10.728 16.753C11.502 17.083 12.104 17.279 12.574 17.427C13.35 17.672 14.056 17.637 14.613 17.546C15.233 17.444 16.71 16.669 17.018 15.816C17.326 14.962 17.326 14.245 17.237 14.096C17.148 13.947 16.943 13.867 16.647 13.717L17.472 14.382Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2ZM12.04 20.15C10.56 20.15 9.11 19.75 7.84 18.99L7.54 18.81L4.42 19.63L5.25 16.59L5.05 16.28C4.21 14.96 3.77 13.45 3.77 11.91C3.77 7.35 7.48 3.64 12.04 3.64C16.6 3.64 20.31 7.35 20.31 11.91C20.31 16.47 16.6 20.15 12.04 20.15Z"/></svg>
                     </div>
                     <span>WhatsApp</span>
                 </a>
@@ -98,14 +109,26 @@
         // Theme Logic
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
-        document.getElementById('themeBtn').innerText = currentTheme === 'dark' ? '☀️' : '🌙';
-        
+        updateThemeIcon(currentTheme);
+
         function toggleTheme() {
             const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            document.getElementById('themeBtn').innerText = theme === 'dark' ? '☀️' : '🌙';
+            updateThemeIcon(theme);
         }
+
+        function updateThemeIcon(theme) {
+            const btn = document.getElementById('themeBtn');
+            if(theme === 'dark') {
+                btn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+            } else {
+                btn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+            }
+        }
+
+        // Dynamic Title Logic
+        document.getElementById('pageTitle').innerText = "Sri Viswa Connect";
 
         // Welcome & Selection Logic
         const savedSection = localStorage.getItem('selected_section');
@@ -131,7 +154,7 @@
             else window.location.href = "parent-dashboard.html";
         }
 
-        // --- FIXED LONG PRESS LOGIC (No Popup on Load) ---
+        // --- Click & Long Press Logic ---
         const trigger = document.getElementById('valiassTrigger');
         let pressTimer;
         let isLongPress = false;
@@ -141,18 +164,21 @@
             isLongPress = false;
             pressTimer = setTimeout(() => {
                 isLongPress = true;
-                window.location.href = 'valiass/login.html';
+                window.location.href = 'valiass/login.html'; // 3 Secs -> Login
             }, 3000);
         };
 
         const endPress = () => {
             clearTimeout(pressTimer);
+            // Single Click -> Popup
+            if (!isLongPress) {
+                document.getElementById('contactModal').classList.add('active');
+            }
         };
 
         trigger.addEventListener('mousedown', startPress);
         trigger.addEventListener('mouseup', endPress);
         trigger.addEventListener('mouseleave', () => clearTimeout(pressTimer)); 
-
         trigger.addEventListener('touchstart', startPress, {passive: true}); 
         trigger.addEventListener('touchend', endPress);
         trigger.addEventListener('touchcancel', () => clearTimeout(pressTimer));
@@ -160,12 +186,6 @@
         function closeModal(id) { 
             document.getElementById(id).classList.remove('active'); 
         }
-        
-        document.querySelectorAll('.modal-overlay').forEach(overlay => { 
-            overlay.addEventListener('click', function(e) { 
-                if (e.target === this) this.classList.remove('active'); 
-            }); 
-        });
     </script>
 </body>
-</html>
+</html> 
